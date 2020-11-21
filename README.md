@@ -8,6 +8,8 @@ backend folder = Flask
 
 frontend folder = Vuejs
 
+Nginx folder = server
+
 db infos located in docker-compose.yml
 
 UI on port 8080
