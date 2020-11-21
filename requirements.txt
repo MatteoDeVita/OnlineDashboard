@@ -1,3 +1,0 @@
-
-flask_login==0.5.0
-flask_sqlalchemy==2.4.4
