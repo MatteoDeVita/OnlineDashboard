@@ -18,5 +18,5 @@ source env/bin/activate &&
 - run the ui
 ```
 cd client &&
-npm run server
+npm run serve
 ```
