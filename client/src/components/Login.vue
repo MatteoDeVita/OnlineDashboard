@@ -27,8 +27,10 @@
         </div>
         <div
             class="button"
+            @click=handleConnexionClick()
+            @mouseover="handleMouseOver"
         >
-            <p>Connexion !</p>
+            <p>{{ connexionButtonText }}</p>
         </div>
     </div>
 </template>
@@ -38,17 +40,52 @@ export default {
   name: 'Login',
   data () {
     return {
+      connexionButtonText: 'Connexion !',
       login: '',
       password: ''
     }
   },
   created () {
 
+  },
+  methods: {
+    handleConnexionClick () {
+      this.handleConnexionClick = '...'
+    },
+    handleMouseOver () {
+      console.log('salut')
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+    .button:hover {
+        background-color: rgba($color: #5b8005, $alpha: 1.0);
+        border-style: solid;
+        color: rgb(218, 216, 216);
+        border-width: 5px;
+        border-radius: 15px;
+        width: 12.5%;
+        margin-left: 8%;
+        margin-top: 3%;
+        text-align: center;
+        font-size: 1.5em;
+
+    }
+    .button:active {
+        background-color: rgba($color: #5b8005, $alpha: 1.0);
+        border-style: solid;
+        color: rgb(218, 216, 216);
+        border-width: 5px;
+        border-radius: 15px;
+        width: 12.5%;
+        margin-left: 8%;
+        margin-top: 3%;
+        text-align: center;
+        font-size: 1.5em;
+
+    }
     .button {
         background-color: rgba($color: #84bd00, $alpha: 1.0);
         border-style: solid;
