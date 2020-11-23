@@ -1,9 +1,9 @@
 FROM python
-COPY ./app.py /home
+COPY ./app.py ./requirement.txt /home/
 WORKDIR /home
 #RUN apt-get -y install python3-venv
 #RUN python3 -m venv env
 #RUN source env/bin/activate
-RUN pip3 install Flask==1.0.2 Flask-Cors==3.0.7
+RUN pip3 install -r requirement.txt
 EXPOSE 5000
-ENTRYPOINT python app.py
+CMD python app.py

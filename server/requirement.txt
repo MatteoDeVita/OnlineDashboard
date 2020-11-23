@@ -1,0 +1,13 @@
+Flask-Cors==3.0.7
+flask
+flask_login
+flask_sqlalchemy
+google-api-core
+google-api-python-client
+google-auth
+google-auth-httplib2
+google-auth-oauthlib
+googleapis-common-protos
+pyopenssl
+Werkzeug
+flask_mysqldb
