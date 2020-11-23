@@ -1,0 +1,19 @@
+{
+  "name": "b-dev-500-lyn-5-1-cardgames-matteo.de-vita",
+  "version": "1.0.0",
+  "description": "- setup ``` sudo apt-get install python3-venv && cd server && python3 -m venv env && source env/bin/activate && pip install Flask==1.0.2 Flask-Cors==3.0.7 ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EpitechIT2020/B-DEV-500-LYN-5-1-cardgames-matteo.de-vita.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EpitechIT2020/B-DEV-500-LYN-5-1-cardgames-matteo.de-vita/issues"
+  },
+  "homepage": "https://github.com/EpitechIT2020/B-DEV-500-LYN-5-1-cardgames-matteo.de-vita#readme"
+}
