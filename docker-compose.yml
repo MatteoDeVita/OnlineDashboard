@@ -12,14 +12,14 @@ services:
     expose:
       - 5000
 
-#  frontend:
-#    build: ./client
-#    container_name: node
-#    ports:
-#      - 8000:8000
-#    restart: always
-#    expose:
-#      - 8080
+  frontend:
+    build: ./client
+    container_name: node
+    ports:
+      - 8000:8000
+    restart: always
+    expose:
+      - 8080
 
   db:
     image: mysql:5.7
