@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  server:
+    build: ./server
+    container_name: flask
+    restart: always
+    expose:
+      - 5000
+
+  frontend:
+    build: ./client
+    container_name: node
+    restart: always
+    expose:
+      - 8080
