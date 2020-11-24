@@ -5,7 +5,9 @@ services:
     build: ./server
     container_name: flask
     restart: always
-    ports: 
+    links:
+      - db
+    ports:
       - 5000:5000
     expose:
       - 5000
@@ -13,8 +15,24 @@ services:
   frontend:
     build: ./client
     container_name: node
+    ports:
+      - 8000:8000
     restart: always
     ports:
       - 8080:8080
     expose:
       - 8080
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "32000:3306"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - ./db/data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=hourquet
+      - MYSQL_ROOT_PASSWORD=hourquet
+      - MYSQL_DATABASE=dash_db
