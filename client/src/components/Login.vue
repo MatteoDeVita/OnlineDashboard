@@ -1,8 +1,6 @@
 <template>
     <div class="login">
-        <div class="topbar">
-            <p>DASHBOARD</p>
-        </div>
+        <TopBar></TopBar>
         <div class="login-fields">
         <md-field
             class="md-field"
@@ -27,7 +25,7 @@
         </div>
         <div
             class="button"
-            @click=handleConnexionClick()
+            @click="handleConnexionClick"
             @mouseover="handleMouseOver"
         >
             <p>{{ connexionButtonText }}</p>
@@ -36,8 +34,13 @@
 </template>
 
 <script>
+import TopBar from './TopBar.vue'
+
 export default {
   name: 'Login',
+  components: {
+    TopBar
+  },
   data () {
     return {
       connexionButtonText: 'Connexion !',
@@ -51,6 +54,7 @@ export default {
   methods: {
     handleConnexionClick () {
       this.handleConnexionClick = '...'
+      this.$router.push('/dashboard')
     },
     handleMouseOver () {
       console.log('salut')
