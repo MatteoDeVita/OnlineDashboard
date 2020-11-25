@@ -3,48 +3,59 @@
       class="dashboard"
     >
       <TopBar></TopBar>
-      <v-button large>
-        Button
-      </v-button>
       <div>
         <vue-fab
             class="fab-main-button"
             mainBtnColor="#84bd00"
             size="big"
-            globalOptions="{spacing: 40}"
         >
             <fab-item
-              idx="0"
+              :idx="0"
               title="YouTube"
               icon="play_circle_filled"
               size="big"
               color="#ff0000"
               v-on:click.native="youtubeOnClick"
             />
+            <fab-item
+              :idx="1"
+              title="Weather"
+              icon="brightness_7"
+              size="big"
+              color="#eccc16"
+              v-on:click.native="weatherOnClick"
+            />
         </vue-fab>
       </div>
       <YouTuveWidget v-if="youtubeActive"></YouTuveWidget>
+      <WeatherWidget v-if="weatherActive"></WeatherWidget>
     </div>
 </template>
 
 <script>
 import TopBar from './TopBar'
 import YouTuveWidget from './YoutubeWidget'
+import WeatherWidget from './WeatherWidget'
 
 export default {
   name: 'Dashboard',
   components: {
     TopBar,
-    YouTuveWidget
+    YouTuveWidget,
+    WeatherWidget
   },
   data () {
     return {
-      youtubeActive: false
+      youtubeActive: false,
+      weatherActive: false
     }
   },
   methods: {
     youtubeOnClick () {
       this.youtubeActive = !this.youtubeActive
+    },
+    weatherOnClick () {
+      this.weatherActive = !this.weatherActive
     }
   }
 }
@@ -62,6 +73,6 @@ export default {
         left:0;
         width: 100%;
         height: 100%;
-        background-color: rgba($color: #333131, $alpha: 1.0);
+        background-color: rgba($color: #333331, $alpha: 1.0);
     }
 </style>

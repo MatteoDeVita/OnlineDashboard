@@ -26,7 +26,6 @@
         <div
             class="button"
             @click="handleConnexionClick"
-            @mouseover="handleMouseOver"
         >
             <p>{{ connexionButtonText }}</p>
         </div>
@@ -55,9 +54,6 @@ export default {
     handleConnexionClick () {
       this.handleConnexionClick = '...'
       this.$router.push('/dashboard')
-    },
-    handleMouseOver () {
-      console.log('salut')
     }
   }
 }
@@ -88,7 +84,6 @@ export default {
         margin-top: 3%;
         text-align: center;
         font-size: 1.5em;
-
     }
     .button {
         background-color: rgba($color: #84bd00, $alpha: 1.0);

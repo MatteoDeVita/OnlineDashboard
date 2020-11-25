@@ -14,9 +14,11 @@
     "material-icon": "^0.1.4",
     "vue": "^2.6.11",
     "vue-button": "^0.1.0",
+    "vue-dragscroll": "^2.1.0",
     "vue-float-action-button": "^0.6.6",
     "vue-material": "^1.0.0-beta-15",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vue-youtube": "^1.4.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.0",

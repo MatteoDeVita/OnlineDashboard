@@ -10,13 +10,12 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
 import VueFab from 'vue-float-action-button'
-
-import VueButton from 'vue-button'
+import VueYoutube from 'vue-youtube'
 
 Vue.use(Router)
 Vue.use(VueMaterial)
 Vue.use(VueFab)
-Vue.component('v-button', VueButton)
+Vue.use(VueYoutube)
 
 export default new Router({
   mode: 'history',

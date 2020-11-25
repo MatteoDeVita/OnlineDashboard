@@ -10,12 +10,27 @@
                               <label>Type here!</label>
                               <md-input v-model="searchQuerry"></md-input>
                             </md-field>
-                    </md-list-item>
-                    <md-list-item>
-                            <md-field>
-                              <p>salut</p>
-                            </md-field>
-                    </md-list-item>
+                              <div
+                                class="searchButton"
+                                @click="searchVideos"
+                              >
+                                Search
+                              </div>
+                        </md-list-item>
+                        <md-list-item>
+                              <div v-dragscroll class="videoPlayerContainer">
+                                <youtube v-for="result in searchResult" :key="result" :video-id="result.id" ref="youtube"></youtube>
+                                <ul>
+                                  <li v-for="result in searchResult" :key="result" >
+                                    <youtube
+                                      :video-id="result.id"
+                                      ref="youtube"
+                                      height=15
+                                    />
+                                  </li>
+                                </ul>
+                              </div>
+                        </md-list-item>
                 </md-list>
             </md-list-item>
         </md-list>
@@ -25,11 +40,13 @@
 <script>
 import { Draggable } from 'draggable-vue-directive'
 import axios from 'axios'
+import { dragscroll } from 'vue-dragscroll'
 
 export default {
   name: 'YouTubeWidget',
   directives: {
-    Draggable
+    Draggable,
+    dragscroll
   },
   data () {
     return {
@@ -39,11 +56,13 @@ export default {
   },
   methods: {
     searchVideos () {
-      this.searchResult.clear()
+      this.searchResult = []
+      if (this.searchQuerry === '') {
+        return
+      }
       axios.get(`http://localhost:5000/youtubeSearch/${this.searchQuerry}`)
-        .then(data => {
-          this.searchResult = data.items
-          console.log(this.searchResult)
+        .then(res => {
+          this.searchResult = res.data
         })
         .catch(err => { console.error(err) })
     }
@@ -52,6 +71,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .searchButton {
+      border-style: solid;
+      margin-left: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgba($color: #ff0000, $alpha: 1.0);
+      border-width: 2px;
+    }
+    .searchButton:hover {
+      background-color: rgba($color: #b80000, $alpha: 1.0);
+    }
+    .searchButton:active {
+      background-color: rgba($color: #b80000, $alpha: 1.0);
+    }
     .youtubeWidget {
         width: 50;
         background-color: rgba($color: #ff0000, $alpha: 1.0);
