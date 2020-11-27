@@ -1,5 +1,5 @@
 <template>
-    <div v-draggable class="youtubeCommentWidget">       
+    <div v-draggable class="youtubeCommentWidget">
     </div>
 </template>
 

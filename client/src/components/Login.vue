@@ -7,7 +7,7 @@
         >
             <label>Login</label>
             <md-input
-                v-model="type"
+                v-model="login"
                 required=true
                 placeholder=""
             ></md-input>
@@ -34,6 +34,7 @@
 
 <script>
 import TopBar from './TopBar.vue'
+import axios from 'axios'
 
 export default {
   name: 'Login',
@@ -51,9 +52,11 @@ export default {
 
   },
   methods: {
-    handleConnexionClick () {
-      this.handleConnexionClick = '...'
-      this.$router.push('/dashboard')
+    async handleConnexionClick () {
+      const res = await axios.get(`http://localhost:5000/login/${this.login}/${this.password}`)
+      if (res.data !== 'FAILURE') {
+        this.$router.push('/dashboard')
+      }
     }
   }
 }
