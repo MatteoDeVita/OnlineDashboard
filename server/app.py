@@ -10,14 +10,12 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 # mysql = MySQL(app)
 
-
 app.config['MYSQL_HOST'] = 'db'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'hourquet'
 app.config['MYSQL_DB'] = 'dash_db'
 
 # mysql = MySQL(app)
-
 
 #enable CORS
 CORS(app, resources={r'/*': {'origins': '*'}})
@@ -58,6 +56,33 @@ def weather(city):
     url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&lang=fr&appid=14b0797baca6b874f51e3d0d18fbb160'
     response = requests.get(url)
     jsonResponse = response.json()
+    dic = {
+        "description": "",
+        "icon": "",
+        "temp": 0,
+        "feels_like": 0,
+        "wind_speed": ""
+    }
+    if "weather" in jsonResponse:
+        if "description" in jsonResponse["weather"][0]:
+            dic["description"] = jsonResponse["weather"][0]["description"]
+        if "icon" in jsonResponse["weather"][0]:
+            dic["icon"] = "http://openweathermap.org/img/w/" + jsonResponse["weather"][0]["icon"] + ".png"
+    if "main" in jsonResponse:
+        if "temp" in jsonResponse["main"]:
+            dic["temp"] = jsonResponse["main"]["temp"]
+        if "feels_like" in jsonResponse["main"]:
+            dic["feels_like"] = jsonResponse["main"]["feels_like"]
+    if "wind" in jsonResponse:
+        if "speed" in jsonResponse["wind"]:
+            dic["wind_speed"] = jsonResponse["wind"]["speed"]
+    return jsonify(dic)
+
+@app.route('/weatherForecast/<city>')
+def weatherForecast(city):
+    url = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&lang=fr&appid=14b0797baca6b874f51e3d0d18fbb160'
+    response = requests.get(url)
+    jsonResponse = response.json()["list"][0]
     dic = {
         "description": "",
         "icon": "",
