@@ -1,14 +1,12 @@
-# from flask_mysqldb import MySQL
 from flask_cors import CORS
 import requests
 import flask
 import os
+from flask import jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import json
 import sys
-
 import google.oauth2.credentials
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
@@ -26,8 +24,6 @@ app = flask.Flask(__name__)
 app.secret_key = "hello"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/users.db'
-
-# mysql = MySQL(app)
 
 db = SQLAlchemy(app)
 #enable CORS
@@ -174,23 +170,23 @@ def print_index_table():
 
 @app.route('/login/<username>/<password>')
 def login(username, password):
-    #value = {'username': username, 'password': password}
-    new_user = Users(user=username, passw=password)
-    db.session.add(new_user)
-    db.session.commit()
-    #Users.query.order_by(Users.username).all()
-    print(Users.query.order_by(Users.user).all(), flush=True)
-    print(new_user.user, flush=True)
-    #jsonvalue = jsonify(value)
-    #console.log()   
-
-    # if OK:
-    return "SUCCESS"
-        #return flask.jsonify()
-    #else:
-        #return "FAILURE"
-    
-    #return login
+    test_user = Users.query.filter_by(user=username).first()
+    if(test_user != None):
+        print(test_user.user,"-> [USER EXIST]", flush=True)
+        if(test_user.passw != password):
+            print(password,"-> [INCORRECT PASSWORD]", flush=True)
+            return("FAILURE")
+        elif(test_user.passw == password):
+            print("[CONNECTION OK]", flush=True)
+            value = {'username': test_user.user, 'password': test_user.passw}
+            return (jsonify(value))
+    elif(test_user == None):
+        new_user = Users(user=username, passw=password)
+        db.session.add(new_user)
+        db.session.commit()
+        print(new_user.user,"-> [USER CREATED]\n[CONNECTION OK]", flush=True)
+        value = {'username': new_user.user, 'password': new_user.passw}
+        return (jsonify(value))
 
 # sanity check route
 #@app.route('/ping', methods=['GET'])
