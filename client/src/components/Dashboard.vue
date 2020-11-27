@@ -25,10 +25,19 @@
               color="#eccc16"
               v-on:click.native="weatherOnClick"
             />
+            <fab-item
+              :idx="2"
+              title="Weather forecast"
+              icon="timeline"
+              size="big"
+              color="#257cff"
+              v-on:click.native="weatherForecastOnClick"
+            />
         </vue-fab>
       </div>
       <YouTuveWidget v-if="youtubeActive"></YouTuveWidget>
       <WeatherWidget v-if="weatherActive"></WeatherWidget>
+      <WeatherForecast v-if="weatherForecastActive"></WeatherForecast>
     </div>
 </template>
 
@@ -36,18 +45,21 @@
 import TopBar from './TopBar'
 import YouTuveWidget from './YoutubeWidget'
 import WeatherWidget from './WeatherWidget'
+import WeatherForecast from './WeatherForecastWidget'
 
 export default {
   name: 'Dashboard',
   components: {
     TopBar,
     YouTuveWidget,
-    WeatherWidget
+    WeatherWidget,
+    WeatherForecast
   },
   data () {
     return {
       youtubeActive: false,
-      weatherActive: false
+      weatherActive: false,
+      weatherForecastActive: false
     }
   },
   methods: {
@@ -56,6 +68,9 @@ export default {
     },
     weatherOnClick () {
       this.weatherActive = !this.weatherActive
+    },
+    weatherForecastOnClick () {
+      this.weatherForecastActive = !this.weatherForecastActive
     }
   }
 }
@@ -73,6 +88,6 @@ export default {
         left:0;
         width: 100%;
         height: 100%;
-        background-color: rgba($color: #333331, $alpha: 1.0);
+        background-color: rgba($color: #313233, $alpha: 1.0);
     }
 </style>
