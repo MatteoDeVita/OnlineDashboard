@@ -16,7 +16,7 @@ services:
     build: ./client
     container_name: node
     ports:
-      - 8000:8000
+      - 8080:8080
     restart: always
     ports:
       - 8080:8080
