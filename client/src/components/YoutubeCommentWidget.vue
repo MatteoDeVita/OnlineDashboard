@@ -1,46 +1,25 @@
 <template>
-    <div v-draggable class="youtubeSearchWidget">
-          <div class="searchContainer">
-            <md-field class="searchField">
-              <label>Type here!</label>
-              <md-input v-model="searchQuerry"></md-input>
-            </md-field>
-              <div
-                class="searchButton"
-                @click="searchVideos"
-              >
-                Search
-              </div>
-          </div>
-              <div v-if="searchResult != undefined">
-                <youtube class="youtubePlayer" :video-id="searchResult.id" ref="youtube"></youtube>
-              </div>
+    <div v-draggable class="youtubeCommentWidget">       
     </div>
 </template>
 
 <script>
 import { Draggable } from 'draggable-vue-directive'
 import axios from 'axios'
-import { dragscroll } from 'vue-dragscroll'
 
 export default {
-  name: 'YouTubeSearchWidget',
+  name: 'YouTubeCommentWidget',
   directives: {
-    Draggable,
-    dragscroll
+    Draggable
   },
   data () {
     return {
-      searchQuerry: '',
       searchResult: undefined
     }
   },
   methods: {
     searchVideos () {
-      if (this.searchQuerry === '') {
-        return
-      }
-      axios.get(`http://localhost:5000/youtubeSearch/${this.searchQuerry}`)
+      axios.get('http://localhost:5000/test')
         .then(res => {
           this.searchResult = res.data
           console.log(this.searchResult)
@@ -71,7 +50,7 @@ export default {
       margin-left: 5px;
       margin-right: 5px;
     }
-    .searchButton {
+    .connectButton {
       display: inline-block;
       border-style: solid;
       margin-left: 10px;
@@ -80,13 +59,13 @@ export default {
       background-color: rgba($color: #ff0000, $alpha: 1.0);
       border-width: 2px;
     }
-    .searchButton:hover {
+    .connectButton:hover {
       background-color: rgba($color: #b80000, $alpha: 1.0);
     }
-    .searchButton:active {
+    .connectButton:active {
       background-color: rgba($color: #b80000, $alpha: 1.0);
     }
-    .youtubeSearchWidget {
+    .youtubeCommentWidget {
         width: 50;
         background-color: rgba($color: #ff0000, $alpha: 1.0);
         width: 20%;
