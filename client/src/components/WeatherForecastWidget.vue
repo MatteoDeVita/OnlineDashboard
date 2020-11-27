@@ -50,7 +50,7 @@ export default {
         this.resultActive = false
         return
       }
-      axios.get(`http://localhost:5000/weather/${this.cityQuerry}`)
+      axios.get(`http://localhost:5000/weatherForecast/${this.cityQuerry}`)
         .then(res => {
           this.searchResult = res.data
           this.resultActive = true
