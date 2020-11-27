@@ -11,11 +11,11 @@
         >
             <fab-item
               :idx="0"
-              title="YouTube"
+              title="YouTube search"
               icon="play_circle_filled"
               size="big"
               color="#ff0000"
-              v-on:click.native="youtubeOnClick"
+              v-on:click.native="youtubeSearchOnClick"
             />
             <fab-item
               :idx="1"
@@ -35,7 +35,7 @@
             />
         </vue-fab>
       </div>
-      <YouTuveWidget v-if="youtubeActive"></YouTuveWidget>
+      <YouTubeSearchWidget v-if="youtubeSearchActive"></YouTubeSearchWidget>
       <WeatherWidget v-if="weatherActive"></WeatherWidget>
       <WeatherForecast v-if="weatherForecastActive"></WeatherForecast>
     </div>
@@ -43,7 +43,7 @@
 
 <script>
 import TopBar from './TopBar'
-import YouTuveWidget from './YoutubeWidget'
+import YouTubeSearchWidget from './YoutubeSearchWidget'
 import WeatherWidget from './WeatherWidget'
 import WeatherForecast from './WeatherForecastWidget'
 
@@ -51,20 +51,20 @@ export default {
   name: 'Dashboard',
   components: {
     TopBar,
-    YouTuveWidget,
+    YouTubeSearchWidget,
     WeatherWidget,
     WeatherForecast
   },
   data () {
     return {
-      youtubeActive: false,
+      youtubeSearchActive: false,
       weatherActive: false,
       weatherForecastActive: false
     }
   },
   methods: {
-    youtubeOnClick () {
-      this.youtubeActive = !this.youtubeActive
+    youtubeSearchOnClick () {
+      this.youtubeSearchActive = !this.youtubeSearchActive
     },
     weatherOnClick () {
       this.weatherActive = !this.weatherActive

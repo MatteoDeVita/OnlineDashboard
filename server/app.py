@@ -49,7 +49,8 @@ def youtubeSearch(querry):
             if "title" in snippet:
                 dic["title"] = snippet["title"]
                 dicArray.insert(len(dicArray), dic)
-    return jsonify(dicArray)
+    print(dicArray[0])
+    return jsonify(dicArray[0])
 
 @app.route('/weather/<city>')
 def weather(city):
