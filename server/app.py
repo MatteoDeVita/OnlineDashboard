@@ -326,6 +326,48 @@ def youtubeChannel(username):
             dic["videoCount"] = statistics["videoCount"]
     return flask.jsonify(dic)
 
+@app.route('/githubAccount/<username>')
+def githubAccount(username):
+    response = requests.get("https://api.github.com/users/" + username)
+    jsonResponse = response.json()
+    dic = {
+        "name": "",
+        "icon_url": "",
+        "url": "",
+        "location": "",
+        "email": ""
+    }
+    if "name" in jsonResponse:
+        dic["name"] = jsonResponse["name"]
+    if "avatar_url" in jsonResponse:
+        dic["icon_url"] = jsonResponse["avatar_url"]
+    if "html_url" in jsonResponse:
+        dic["url"] = jsonResponse["html_url"]
+    if "location" in jsonResponse:
+        dic["location"] = jsonResponse["location"]
+    if "email" in jsonResponse:
+        dic["email"] = jsonResponse["email"]
+    return flask.jsonify((dic))
+
+
+@app.route("/githubRepos/<username>")
+def githubRepos(username):
+    response = requests.get("https://api.github.com/users/" + username + "/repos")
+    jsonResponse = response.json()
+    dicArray = []
+    for item in jsonResponse:
+        dic = {}
+        if "name" in item:
+            dic["name"] = item["name"]
+        if "html_url" in item:
+            dic["url"] = item["html_url"]
+        if "description" in item:
+            dic["description"] = item["description"]
+        dicArray.insert(len(dicArray), dic)
+    return flask.jsonify((dicArray))
+
+
+
 if __name__ == '__main__':
     db.create_all()    
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
