@@ -1,5 +1,5 @@
 <template>
-    <div v-draggable class="youtubeChannelWidget">
+    <div v-draggable class="githubAccountWidget">
           <div class="searchContainer">
             <md-field class="searchField">
               <label>Username</label>
@@ -16,17 +16,11 @@
             v-if="searchResult != undefined"
             class="displayer"
           >
-            <p>Nom de la chaine : {{ searchResult.title }}</p>
-            <p>Decription : {{ searchResult.description }}</p>
-            <p>Pays : {{ searchResult.country }}</p>
-            <div>
-                <img class="channelIcon" v-bind:src="searchResult.thumbnail_url">
-                <div class="counts">
-                    <p class="viewCount">Nombre de vue : {{ searchResult.viewCount }}</p>
-                    <p class="subscriberCount">Nombre d'abonnés : {{ searchResult.subscriberCount }}</p>
-                    <p class="videoCount">Nombre de vidéo : {{ searchResult.videoCount }}</p>
-                </div>
-            </div>
+            <p v-if="searchResult.name != undefined">Nom : {{ searchResult.name }}</p>
+            <img v-if="searchResult.icon_url != undefined" class="accountIcon" v-bind:src="searchResult.icon_url"/>
+            <p v-if="searchResult.location != undefined">Ville : {{ searchResult.location }}</p>
+            <p v-if="searchResult.email != undefined">Mail : {{ searchResult.email }}</p>
+            <a v-if="searchResult.url" target="_blank" v-bind:href="searchResult.url">Voir le profil</a>
           </div>
     </div>
 </template>
@@ -37,7 +31,7 @@ import axios from 'axios'
 import { dragscroll } from 'vue-dragscroll'
 
 export default {
-  name: 'YoutubeChannelWidget',
+  name: 'GithubAccountWidget',
   directives: {
     Draggable,
     dragscroll
@@ -53,7 +47,7 @@ export default {
       if (this.searchedUsername === '') {
         return
       }
-      axios.get(`http://localhost:5000/youtubeChannel/${this.searchedUsername}`)
+      axios.get(`http://localhost:5000/githubAccount/${this.searchedUsername}`)
         .then(res => {
           this.searchResult = res.data
           console.log(this.searchResult)
@@ -90,20 +84,20 @@ export default {
       margin-left: 10px;
       padding: 10px;
       border-radius: 10px;
-      background-color: rgba($color: #ff0000, $alpha: 1.0);
+      background-color: rgba($color: #ffffff, $alpha: 1.0);
       border-width: 2px;
     }
     .searchButton:hover {
-      background-color: rgba($color: #b80000, $alpha: 1.0);
+      background-color: rgba($color: #a1a0a0, $alpha: 1.0);
     }
     .searchButton:active {
-      background-color: rgba($color: #b80000, $alpha: 1.0);
+      background-color: rgba($color: #a1a0a0, $alpha: 1.0);
     }
-    .youtubeChannelWidget {
+    .githubAccountWidget {
         width: 50;
-        background-color: rgba($color: #ff0000, $alpha: 1.0);
+        background-color: rgba($color: #ffffff, $alpha: 1.0);
         width: 20%;
-        height: 50%;
+        height: 62%;
         border-radius: 10px;
         border-width: 1px;
         padding: 10px
@@ -113,7 +107,7 @@ export default {
         display: inline-block;
         vertical-align: top;
     }
-    .channelIcon {
+    .accountIcon {
         padding-top: 10px;
         vertical-align: top;
         display: inline-block;
