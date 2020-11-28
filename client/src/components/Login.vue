@@ -1,33 +1,43 @@
 <template>
     <div class="login">
-        <TopBar></TopBar>
-        <div class="login-fields">
-        <md-field
-            class="md-field"
-        >
-            <label>Login</label>
-            <md-input
-                v-model="login"
-                required=true
-                placeholder=""
-            ></md-input>
-        </md-field>
-        <md-field class="md-field">
-            <label>Password</label>
-            <md-input
-                v-model="password"
-                type="password"
-                required=true
-                placeholder=""
+    <TopBar></TopBar>
+        <div class="loginElements">
+            <div class="login-fields">
+            <md-field
+                class="md-field"
             >
-            </md-input>
-        </md-field>
+                <label>Login</label>
+                <md-input
+                    v-model="login"
+                    required=true
+                    placeholder=""
+                ></md-input>
+            </md-field>
+            <md-field class="md-field">
+                <label>Password</label>
+                <md-input
+                    v-model="password"
+                    type="password"
+                    required=true
+                    placeholder=""
+                >
+                </md-input>
+            </md-field>
+            </div>
+            <div
+                class="button"
+                @click="handleConnexionClick"
+            >
+                <p>{{ connexionButtonText }}</p>
+            </div>
+            <div>
         </div>
-        <div
-            class="button"
-            @click="handleConnexionClick"
-        >
-            <p>{{ connexionButtonText }}</p>
+        </div>
+        <div>
+            <img
+                class="img"
+                src="../assets/mainScreenImage.png"
+            >
         </div>
     </div>
 </template>
@@ -70,6 +80,7 @@ export default {
         border-width: 5px;
         border-radius: 15px;
         width: 12.5%;
+        max-width: 12.5%;
         margin-left: 8%;
         margin-top: 3%;
         text-align: center;
@@ -136,5 +147,33 @@ export default {
         border-radius: 40px;
         width: 25%;
         padding: 10px;
+        display: inline-block;
     }
+    .loginElements {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .img {
+        width: 70%;
+        // height: 80%;
+        position: absolute;
+        top: 20%;
+        left: 28%;
+        border-radius: 10px;
+        border-style: solid;
+        border-color: white;
+        border-width: 5px;
+        z-index: 10;
+    }
+    // .img {
+    //     display: absolute;
+    //     z-index: 100;
+    //     border-style: solid;
+    //     border-color: white;
+    //     border-radius: 10px;
+    //     border-width: 5px;
+    //     width: 50%;
+    //     left: 50%;
+    // }
 </style>
