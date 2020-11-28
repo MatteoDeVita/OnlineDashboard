@@ -27,6 +27,14 @@
             />
             <fab-item
               :idx="2"
+              title="YouTube channel info"
+              icon="account_box"
+              size="big"
+              color="#ff0000"
+              v-on:click.native="youtubeChannelOnClick"
+            />
+            <fab-item
+              :idx="3"
               title="Weather"
               icon="brightness_7"
               size="big"
@@ -34,7 +42,7 @@
               v-on:click.native="weatherOnClick"
             />
             <fab-item
-              :idx="3"
+              :idx="4"
               title="Weather forecast"
               icon="timeline"
               size="big"
@@ -45,6 +53,7 @@
       </div>
       <YouTubeSearchWidget v-if="youtubeSearchActive"></YouTubeSearchWidget>
       <YoutubeComment v-if="youtubeCommentActive"></YoutubeComment>
+      <YoutubeChannelWidget v-if="youtubeChannelActive"></YoutubeChannelWidget>
       <WeatherWidget v-if="weatherActive"></WeatherWidget>
       <WeatherForecast v-if="weatherForecastActive"></WeatherForecast>
     </div>
@@ -53,9 +62,10 @@
 <script>
 import TopBar from './TopBar'
 import YouTubeSearchWidget from './YoutubeSearchWidget'
+import YoutubeComment from './YoutubeCommentWidget'
+import YoutubeChannelWidget from './YoutubeChannelWidget'
 import WeatherWidget from './WeatherWidget'
 import WeatherForecast from './WeatherForecastWidget'
-import YoutubeComment from './YoutubeCommentWidget'
 
 export default {
   name: 'Dashboard',
@@ -63,6 +73,7 @@ export default {
     TopBar,
     YouTubeSearchWidget,
     YoutubeComment,
+    YoutubeChannelWidget,
     WeatherWidget,
     WeatherForecast
   },
@@ -70,6 +81,7 @@ export default {
     return {
       youtubeSearchActive: false,
       youtubeCommentActive: false,
+      youtubeChannelActive: false,
       weatherActive: false,
       weatherForecastActive: false
     }
@@ -80,6 +92,9 @@ export default {
     },
     youtubeCommentOnClick () {
       this.youtubeCommentActive = !this.youtubeCommentActive
+    },
+    youtubeChannelOnClick () {
+      this.youtubeChannelActive = !this.youtubeChannelActive
     },
     weatherOnClick () {
       this.weatherActive = !this.weatherActive

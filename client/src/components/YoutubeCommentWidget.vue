@@ -1,5 +1,16 @@
 <template>
     <div v-draggable class="youtubeCommentWidget">
+        <div
+          class="connectButton"
+          @click="searchVideos"
+          >
+            <a
+              target="_blank"
+              href="http://localhost:5000/test"
+            >
+              Connect to YouTube
+            </a>
+      </div>
     </div>
 </template>
 
@@ -22,7 +33,6 @@ export default {
       axios.get('http://localhost:5000/test')
         .then(res => {
           this.searchResult = res.data
-          console.log(this.searchResult)
         })
         .catch(err => {
           console.error(err)

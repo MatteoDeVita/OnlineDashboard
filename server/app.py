@@ -290,6 +290,42 @@ def weatherForecast(city):
             dic["wind_speed"] = jsonResponse["wind"]["speed"]
     return flask.jsonify(dic)
 
+@app.route('/youtubeChannel/<username>')
+def youtubeChannel(username):
+    response = requests.get("https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&forUsername=" + username+ "&key=AIzaSyDk9VAahqVFWxpTqzYkV104rNMZV8TsQ10")
+    jsonResponse = response.json()
+    dic = {
+        "title": "",
+        "description": "",
+        "thumbnail_url": "",
+        "country": "",
+        "viewCount": "",
+        "subscriberCount": "",
+        "videoCount": "",        
+    }
+    item = jsonResponse["items"][0]
+    if "snippet" in item:
+        snippet = item["snippet"]
+        if "title" in snippet:
+            dic["title"] = snippet["title"]
+        if "description" in snippet:
+            dic["description"] = snippet["description"]
+        if "thumbnails" in snippet:
+            thumbnails = snippet["thumbnails"]
+            if "default" in thumbnails:
+                dic["thumbnail_url"] = thumbnails["default"]["url"]
+        if "country" in snippet:
+            dic["country"] = snippet["country"]
+    if "statistics" in item:
+        statistics = item["statistics"]
+        if "viewCount" in statistics:
+            dic["viewCount"] = statistics["viewCount"]
+        if "subscriberCount" in statistics:
+            dic["subscriberCount"] = statistics["subscriberCount"]
+        if "videoCount" in statistics:
+            dic["videoCount"] = statistics["videoCount"]
+    return flask.jsonify(dic)
+
 if __name__ == '__main__':
     db.create_all()    
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
