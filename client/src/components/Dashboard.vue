@@ -67,20 +67,34 @@
             />
         </vue-fab>
       </div>
-      <YouTubeSearchWidget v-if="youtubeSearchActive"></YouTubeSearchWidget>
-      <YoutubeComment v-if="youtubeCommentActive"></YoutubeComment>
-      <YoutubeChannelWidget v-if="youtubeChannelActive"></YoutubeChannelWidget>
-      <WeatherWidget v-if="weatherActive"></WeatherWidget>
-      <WeatherForecast v-if="weatherForecastActive"></WeatherForecast>
-      <GithubAccountWidget v-if="gitHubAccountActive"></GithubAccountWidget>
-      <GihubRepositoriesWidget v-if="GihubRepositoriesActive"></GihubRepositoriesWidget>
+        <div v-for="youtubeSearch in youtubeSearchArray" :key="youtubeSearch">
+          <YouTubeSearchWidget/>
+        </div>
+        <div v-for="youtubeComment in youtubeCommentArray" :key="youtubeComment">
+          <YoutubeCommentWidget/>
+        </div>
+        <div v-for="youtubeChannel in youtubeChannelArray" :key="youtubeChannel">
+          <YoutubeChannelWidget/>
+        </div>
+        <div v-for="weatherWidget in weatherWidgetArray" :key="weatherWidget">
+          <WeatherWidget/>
+        </div>
+        <div v-for="weatherForecast in weatherForecastArray" :key="weatherForecast">
+          <WeatherForecast/>
+        </div>
+        <div v-for="gitHubAccount in gitHubAccountArray" :key="gitHubAccount">
+          <GithubAccountWidget/>
+        </div>
+        <div v-for="gihubRepositories in gihubRepositoriesArray" :key="gihubRepositories">
+          <GihubRepositoriesWidget/>
+        </div>
     </div>
 </template>
 
 <script>
 import TopBar from './TopBar'
 import YouTubeSearchWidget from './YoutubeSearchWidget'
-import YoutubeComment from './YoutubeCommentWidget'
+import YoutubeCommentWidget from './YoutubeCommentWidget'
 import YoutubeChannelWidget from './YoutubeChannelWidget'
 import WeatherWidget from './WeatherWidget'
 import WeatherForecast from './WeatherForecastWidget'
@@ -92,7 +106,7 @@ export default {
   components: {
     TopBar,
     YouTubeSearchWidget,
-    YoutubeComment,
+    YoutubeCommentWidget,
     YoutubeChannelWidget,
     WeatherWidget,
     WeatherForecast,
@@ -101,36 +115,36 @@ export default {
   },
   data () {
     return {
-      youtubeSearchActive: false,
-      youtubeCommentActive: false,
-      youtubeChannelActive: false,
-      weatherActive: false,
-      weatherForecastActive: false,
-      gitHubAccountActive: false,
-      GihubRepositoriesActive: false
+      youtubeSearchArray: [],
+      youtubeCommentArray: [],
+      youtubeChannelArray: [],
+      weatherWidgetArray: [],
+      weatherForecastArray: [],
+      gitHubAccountArray: [],
+      gihubRepositoriesArray: []
     }
   },
   methods: {
     youtubeSearchOnClick () {
-      this.youtubeSearchActive = !this.youtubeSearchActive
+      this.youtubeSearchArray.push(YouTubeSearchWidget)
     },
     youtubeCommentOnClick () {
-      this.youtubeCommentActive = !this.youtubeCommentActive
+      this.youtubeCommentArray.push(YoutubeCommentWidget)
     },
     youtubeChannelOnClick () {
-      this.youtubeChannelActive = !this.youtubeChannelActive
+      this.youtubeChannelArray.push(YoutubeChannelWidget)
     },
     weatherOnClick () {
-      this.weatherActive = !this.weatherActive
+      this.weatherWidgetArray.push(WeatherWidget)
     },
     weatherForecastOnClick () {
-      this.weatherForecastActive = !this.weatherForecastActive
+      this.weatherForecastArray.push(WeatherForecast)
     },
     gitHubAccounOnClick () {
-      this.gitHubAccountActive = !this.gitHubAccountActive
+      this.gitHubAccountArray.push(GithubAccountWidget)
     },
     gitHubRepositoriesOnClick () {
-      this.GihubRepositoriesActive = !this.GihubRepositoriesActive
+      this.gihubRepositoriesArray.push(GihubRepositoriesWidget)
     }
   }
 }
