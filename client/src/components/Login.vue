@@ -1,6 +1,15 @@
 <template>
     <div class="login">
     <TopBar></TopBar>
+     <md-dialog :md-active.sync="error" class="dialog">
+      <md-dialog-title>Erreur</md-dialog-title>
+          <p id="dialogText">Une erreur a eu lieu lors de la connexion</p>
+          <p id="dialogText">Le nom d'utilisateur ou le mot de passe est incorrect</p>
+          <p id="dialogText">Veuillez réessayer</p>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="error = false">OK</md-button>
+      </md-dialog-actions>
+    </md-dialog>
         <div class="loginElements">
             <div class="login-fields">
             <md-field
@@ -55,7 +64,8 @@ export default {
     return {
       connexionButtonText: 'Connexion !',
       login: '',
-      password: ''
+      password: '',
+      error: false
     }
   },
   created () {
@@ -65,7 +75,10 @@ export default {
     async handleConnexionClick () {
       const res = await axios.get(`http://localhost:5000/login/${this.login}/${this.password}`)
       if (res.data !== 'FAILURE') {
+        this.error = false
         this.$router.push('/dashboard')
+      } else {
+        this.error = true
       }
     }
   }
@@ -166,14 +179,12 @@ export default {
         border-width: 5px;
         z-index: 10;
     }
-    // .img {
-    //     display: absolute;
-    //     z-index: 100;
-    //     border-style: solid;
-    //     border-color: white;
-    //     border-radius: 10px;
-    //     border-width: 5px;
-    //     width: 50%;
-    //     left: 50%;
-    // }
+    .dialog {
+        width: 75%;
+        max-width: 1500px;
+    }
+    #dialogText {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
 </style>
