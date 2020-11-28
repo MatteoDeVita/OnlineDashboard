@@ -1,5 +1,5 @@
 <template>
-    <div v-draggable class="youtubeChannelWidget">
+    <div v-if="show == true" v-draggable class="youtubeChannelWidget">
           <div class="searchContainer">
             <md-field class="searchField">
               <label>Username</label>
@@ -28,6 +28,11 @@
                 </div>
             </div>
           </div>
+          <div>
+            <md-button @click="show = false" class="md-icon-button closeButton">
+              <md-icon>close</md-icon>
+            </md-button>
+        </div>
     </div>
 </template>
 
@@ -45,7 +50,8 @@ export default {
   data () {
     return {
       searchedUsername: '',
-      searchResult: undefined
+      searchResult: undefined,
+      show: true
     }
   },
   methods: {
@@ -117,5 +123,8 @@ export default {
         padding-top: 10px;
         vertical-align: top;
         display: inline-block;
+    }
+    .closeButton {
+      margin-left: 90%;
     }
 </style>

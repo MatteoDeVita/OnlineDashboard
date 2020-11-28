@@ -1,5 +1,5 @@
 <template>
-    <div v-draggable class="githubRepos">
+    <div v-if="show == true" v-draggable class="githubRepos">
           <div class="searchContainer">
             <md-field class="searchField">
               <label>Username</label>
@@ -25,6 +25,11 @@
                 </li>
             </ul>
           </div>
+        <div>
+            <md-button @click="show = false" class="md-icon-button closeButton">
+              <md-icon>close</md-icon>
+            </md-button>
+        </div>
     </div>
 </template>
 
@@ -42,7 +47,8 @@ export default {
   data () {
     return {
       searchedUsername: '',
-      searchResult: undefined
+      searchResult: undefined,
+      show: true
     }
   },
   methods: {
@@ -116,5 +122,8 @@ export default {
         padding-top: 10px;
         vertical-align: top;
         display: inline-block;
+    }
+    .closeButton {
+      margin-left: 90%;
     }
 </style>

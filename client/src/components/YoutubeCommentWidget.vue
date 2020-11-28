@@ -1,5 +1,5 @@
 <template>
-    <div v-draggable class="youtubeCommentWidget">
+    <div v-if="show == true" v-draggable class="youtubeCommentWidget">
         <div
           class="connectButton"
           @click="searchVideos"
@@ -10,6 +10,11 @@
             >
               Connect to YouTube
             </a>
+      </div>
+      <div>
+        <md-button @click="show = false" class="md-icon-button closeButton">
+          <md-icon>close</md-icon>
+        </md-button>
       </div>
     </div>
 </template>
@@ -25,7 +30,8 @@ export default {
   },
   data () {
     return {
-      searchResult: undefined
+      searchResult: undefined,
+      show: true
     }
   },
   methods: {
@@ -83,5 +89,8 @@ export default {
         border-radius: 10px;
         border-width: 1px;
         padding: 10px
+    }
+    .closeButton {
+      margin-left: 90%;
     }
 </style>

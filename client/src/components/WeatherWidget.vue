@@ -1,5 +1,5 @@
 <template>
-    <div v-draggable class="weather">
+    <div v-if="show == true" v-draggable class="weather">
         <div class="searchField">
             <md-field class="inputField">
                 <label>Ville</label>
@@ -24,6 +24,11 @@
                 </div>
             </div>
         </div>
+        <div>
+            <md-button @click="show = false" class="md-icon-button closeButton">
+              <md-icon>close</md-icon>
+            </md-button>
+        </div>
     </div>
 </template>
 
@@ -40,7 +45,8 @@ export default {
     return {
       cityQuerry: '',
       searchResult: {},
-      resultActive: false
+      resultActive: false,
+      show: true
     }
   },
   methods: {
@@ -107,5 +113,8 @@ export default {
     }
     .temperature {
         display: inline-block;
+    }
+    .closeButton {
+      margin-left: 90%;
     }
 </style>

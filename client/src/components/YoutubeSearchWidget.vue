@@ -1,5 +1,5 @@
 <template>
-    <div v-draggable class="youtubeSearchWidget">
+    <div v-if="show == true" v-draggable class="youtubeSearchWidget">
           <div class="searchContainer">
             <md-field class="searchField">
               <label>Type here!</label>
@@ -15,6 +15,11 @@
               <div v-if="searchResult != undefined">
                 <youtube class="youtubePlayer" :video-id="searchResult.id" ref="youtube"></youtube>
               </div>
+          <div>
+            <md-button @click="show = false" class="md-icon-button closeButton">
+              <md-icon>close</md-icon>
+            </md-button>
+        </div>
     </div>
 </template>
 
@@ -32,7 +37,8 @@ export default {
   data () {
     return {
       searchQuerry: '',
-      searchResult: undefined
+      searchResult: undefined,
+      show: true
     }
   },
   methods: {
@@ -94,5 +100,8 @@ export default {
         border-radius: 10px;
         border-width: 1px;
         padding: 10px
+    }
+    .closeButton {
+      margin-left: 90%;
     }
 </style>
