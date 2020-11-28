@@ -57,6 +57,14 @@
               color="#000000"
               v-on:click.native="gitHubAccounOnClick"
             />
+            <fab-item
+              :idx="6"
+              title="GitHub Account Repositories"
+              icon="featured_play_list"
+              size="big"
+              color="#000000"
+              v-on:click.native="gitHubRepositoriesOnClick"
+            />
         </vue-fab>
       </div>
       <YouTubeSearchWidget v-if="youtubeSearchActive"></YouTubeSearchWidget>
@@ -65,6 +73,7 @@
       <WeatherWidget v-if="weatherActive"></WeatherWidget>
       <WeatherForecast v-if="weatherForecastActive"></WeatherForecast>
       <GithubAccountWidget v-if="gitHubAccountActive"></GithubAccountWidget>
+      <GihubRepositoriesWidget v-if="GihubRepositoriesActive"></GihubRepositoriesWidget>
     </div>
 </template>
 
@@ -76,6 +85,7 @@ import YoutubeChannelWidget from './YoutubeChannelWidget'
 import WeatherWidget from './WeatherWidget'
 import WeatherForecast from './WeatherForecastWidget'
 import GithubAccountWidget from './GithubAccountWidget'
+import GihubRepositoriesWidget from './GithubRepositoriesWidget'
 
 export default {
   name: 'Dashboard',
@@ -86,7 +96,8 @@ export default {
     YoutubeChannelWidget,
     WeatherWidget,
     WeatherForecast,
-    GithubAccountWidget
+    GithubAccountWidget,
+    GihubRepositoriesWidget
   },
   data () {
     return {
@@ -95,7 +106,8 @@ export default {
       youtubeChannelActive: false,
       weatherActive: false,
       weatherForecastActive: false,
-      gitHubAccountActive: false
+      gitHubAccountActive: false,
+      GihubRepositoriesActive: false
     }
   },
   methods: {
@@ -116,6 +128,9 @@ export default {
     },
     gitHubAccounOnClick () {
       this.gitHubAccountActive = !this.gitHubAccountActive
+    },
+    gitHubRepositoriesOnClick () {
+      this.GihubRepositoriesActive = !this.GihubRepositoriesActive
     }
   }
 }
