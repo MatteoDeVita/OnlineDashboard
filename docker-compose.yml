@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  server:
+  backend:
     build: ./server
     container_name: flask
     volumes:
@@ -12,13 +12,11 @@ services:
     expose:
       - 5000
 
-  frontend:
+  server:
     build: ./client
     container_name: node
     ports:
       - 8080:8080
     restart: always
-    ports:
-      - 8080:8080
     expose:
       - 8080
