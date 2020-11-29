@@ -349,7 +349,6 @@ def githubAccount(username):
         dic["email"] = jsonResponse["email"]
     return flask.jsonify((dic))
 
-
 @app.route("/githubRepos/<username>")
 def githubRepos(username):
     response = requests.get("https://api.github.com/users/" + username + "/repos")
