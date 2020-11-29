@@ -1,5 +1,5 @@
 FROM python
-COPY ./app.py ./requirement.txt /home/
+COPY ./app.py ./requirement.txt ./client_secret.json /home/
 WORKDIR /home
 RUN pip3 install -r requirement.txt
 EXPOSE 5000

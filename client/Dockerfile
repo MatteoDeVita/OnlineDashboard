@@ -1,5 +1,5 @@
 FROM node:12-alpine
-COPY babel.config.js package.json yarn.lock .browserslistrc .editorconfig .eslintrc.js /home/
+COPY about.js babel.config.js package.json yarn.lock .browserslistrc .editorconfig .eslintrc.js /home/
 COPY src /home/src
 COPY public /home/public
 WORKDIR /home

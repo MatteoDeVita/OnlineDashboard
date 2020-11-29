@@ -96,7 +96,7 @@ export default {
         width: 50;
         background-color: rgba($color: #ff0000, $alpha: 1.0);
         width: 20%;
-        height: 28%;
+        height: 32%;
         border-radius: 10px;
         border-width: 1px;
         padding: 10px

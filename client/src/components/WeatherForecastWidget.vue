@@ -79,7 +79,7 @@ export default {
         height: 50%;
         border-radius: 10px;
         border-width: 1px;
-        max-height: 24%;
+        max-height: 28%;
     }
     .searchField {
         width: 100%;
