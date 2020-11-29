@@ -366,7 +366,13 @@ def githubRepos(username):
         dicArray.insert(len(dicArray), dic)
     return flask.jsonify((dicArray))
 
-
+@app.route("/getIpAdress")
+def getIpAdress():
+    response = requests.get("https://api.ipgeolocation.io/ipgeo?apiKey=a50ab77af4964fc68e90d680cf4aeafa")
+    jsonResponse = response.json()
+    if "ip" in jsonResponse:
+        return jsonResponse["ip"]
+    return "N/A"
 
 if __name__ == '__main__':
     db.create_all()    

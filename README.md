@@ -1,6 +1,6 @@
 - run the app
 ```
-docker-compose up -d --build
+docker-compose up --build -d
 ```
 
 - stop the app

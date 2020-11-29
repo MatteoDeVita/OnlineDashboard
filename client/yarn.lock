@@ -2541,6 +2541,15 @@
   "resolved" "https://registry.npm.taobao.org/cli-width/download/cli-width-3.0.0.tgz"
   "version" "3.0.0"
 
+"clipboard@^2.0.4":
+  "integrity" "sha512-g5zbiixBRk/wyKakSwCKd7vQXDjFnAMGHoEyBogG/bw9kTD9GvdAvaoRR1ALcEzt3pVKxZR0pViekPMIS0QyGg=="
+  "resolved" "https://registry.npmjs.org/clipboard/-/clipboard-2.0.6.tgz"
+  "version" "2.0.6"
+  dependencies:
+    "good-listener" "^1.2.2"
+    "select" "^1.1.2"
+    "tiny-emitter" "^2.0.0"
+
 "clipboardy@^2.3.0":
   "integrity" "sha1-PCkDZQxo5GqRs4iYW8J3QofbopA="
   "resolved" "https://registry.npm.taobao.org/clipboardy/download/clipboardy-2.3.0.tgz"
@@ -3246,6 +3255,11 @@
   "integrity" "sha1-3zrhmayt+31ECqrgsp4icrJOxhk="
   "resolved" "https://registry.npm.taobao.org/delayed-stream/download/delayed-stream-1.0.0.tgz"
   "version" "1.0.0"
+
+"delegate@^3.1.2":
+  "integrity" "sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw=="
+  "resolved" "https://registry.npmjs.org/delegate/-/delegate-3.2.0.tgz"
+  "version" "3.2.0"
 
 "delegates@^1.0.0":
   "integrity" "sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o="
@@ -4502,6 +4516,13 @@
     "glob" "~7.1.1"
     "lodash" "~4.17.10"
     "minimatch" "~3.0.2"
+
+"good-listener@^1.2.2":
+  "integrity" "sha1-1TswzfkxPf+33JoNR3CWqm0UXFA="
+  "resolved" "https://registry.npmjs.org/good-listener/-/good-listener-1.2.2.tgz"
+  "version" "1.2.2"
+  dependencies:
+    "delegate" "^3.1.2"
 
 "graceful-fs@^4.1.11", "graceful-fs@^4.1.15", "graceful-fs@^4.1.2", "graceful-fs@^4.1.6", "graceful-fs@^4.2.2", "graceful-fs@^4.2.3":
   "integrity" "sha1-Ila94U02MpWMRl68ltxGfKB6Kfs="
@@ -7856,6 +7877,11 @@
   "resolved" "https://registry.npm.taobao.org/select-hose/download/select-hose-2.0.0.tgz"
   "version" "2.0.0"
 
+"select@^1.1.2":
+  "integrity" "sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0="
+  "resolved" "https://registry.npmjs.org/select/-/select-1.1.2.tgz"
+  "version" "1.1.2"
+
 "selfsigned@^1.10.7":
   "integrity" "sha1-DRcgi30Swz+OrIXEGDXyf8PYGjA="
   "resolved" "https://registry.npm.taobao.org/selfsigned/download/selfsigned-1.10.8.tgz?cache=0&sync_timestamp=1600186146412&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fselfsigned%2Fdownload%2Fselfsigned-1.10.8.tgz"
@@ -8678,6 +8704,11 @@
   "resolved" "https://registry.npm.taobao.org/timsort/download/timsort-0.3.0.tgz"
   "version" "0.3.0"
 
+"tiny-emitter@^2.0.0":
+  "integrity" "sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q=="
+  "resolved" "https://registry.npmjs.org/tiny-emitter/-/tiny-emitter-2.1.0.tgz"
+  "version" "2.1.0"
+
 "tmp@^0.0.33":
   "integrity" "sha1-bTQzWIl2jSGyvNoKonfO07G/rfk="
   "resolved" "https://registry.npm.taobao.org/tmp/download/tmp-0.0.33.tgz"
@@ -9113,6 +9144,14 @@
   "resolved" "https://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz"
   "version" "2.3.4"
 
+"vue-json-viewer@^2.2.16":
+  "integrity" "sha512-pZJyK3+o+cZ76w0d9oGXLmc3GrDhx1iaPEy5h0s6yIK/vFtcTzb+1LQMKsmPj0vzoieLS53d4r9l2q4JgUdFuQ=="
+  "resolved" "https://registry.npmjs.org/vue-json-viewer/-/vue-json-viewer-2.2.16.tgz"
+  "version" "2.2.16"
+  dependencies:
+    "clipboard" "^2.0.4"
+    "vue" "^2.6.9"
+
 "vue-loader-v16@npm:vue-loader@^16.0.0-beta.7":
   "integrity" "sha1-tqfn8w0o81ZZqD3kH0oYMaQjKgQ="
   "resolved" "https://registry.npm.taobao.org/vue-loader/download/vue-loader-16.0.0-rc.2.tgz?cache=0&sync_timestamp=1605670716799&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-loader%2Fdownload%2Fvue-loader-16.0.0-rc.2.tgz"
@@ -9184,7 +9223,7 @@
     "get-youtube-id" "^1.0.0"
     "youtube-player" "^5.4.0"
 
-"vue@^2 || ^3.0.0-0", "vue@^2.0.1", "vue@^2.3.0", "vue@^2.5.0", "vue@^2.6.10", "vue@^2.6.11", "vue@2":
+"vue@^2 || ^3.0.0-0", "vue@^2.0.1", "vue@^2.3.0", "vue@^2.5.0", "vue@^2.6.10", "vue@^2.6.11", "vue@^2.6.9", "vue@2":
   "integrity" "sha1-9evU+mvShpQD4pqJau1JBEVskSM="
   "resolved" "https://registry.npm.taobao.org/vue/download/vue-2.6.12.tgz?cache=0&sync_timestamp=1603223843200&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-2.6.12.tgz"
   "version" "2.6.12"
